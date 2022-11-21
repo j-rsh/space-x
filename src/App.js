@@ -4,6 +4,8 @@ import { AppProvider } from "@shopify/polaris";
 import translations from "@shopify/polaris/locales/en.json";
 import Header from "./components/Header";
 import Home from "./components/Home";
+import '@shopify/polaris/build/esm/styles.css';
+
 import './index.css';
 function App() {
   return (
