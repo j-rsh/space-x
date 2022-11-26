@@ -1,8 +1,9 @@
 import {gql} from '@apollo/client';
 const GET_LAUNCH = gql`
-    query{
-        launches(limit: 3) {
+    query GET_LIMIT($limit:Int){
+        launches(limit: $limit) {
     mission_name
+    launch_date_utc
     links {
       flickr_images
     }
@@ -19,4 +20,18 @@ const GET_ROCKETS = gql`
   }
 }
 `
-export {GET_LAUNCH , GET_ROCKETS} 
+const GET_SOCIAL_MEDIA = gql`
+    query{
+      company {
+    links {
+      website
+      twitter
+      flickr
+      elon_twitter
+    }
+  }
+    }
+
+`
+
+export {GET_LAUNCH , GET_ROCKETS ,GET_SOCIAL_MEDIA } 
