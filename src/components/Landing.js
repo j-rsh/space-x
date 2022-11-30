@@ -1,5 +1,4 @@
-import {TopBar, Loading,Navigation, Frame, Avatar,ResourceList, ResourceItem , Card ,Text,
-Layout,Page , AppProvider
+import {TopBar, Loading,Navigation, Frame, Avatar,ResourceList, ResourceItem , Card ,Text,Page , AppProvider
 } from '@shopify/polaris';
 import {HomeMinor,OrdersMinor, ConversationMinor,ArrowLeftMinor} from '@shopify/polaris-icons';
 import {useState, useCallback} from 'react';
@@ -7,12 +6,11 @@ import {useQuery} from '@apollo/client';
 import {GET_LAUNCH} from '../graphQl/query';
 
 function Landing() {
-    const {loading , data , error} = useQuery(GET_LAUNCH,{variables:{limit:7}});
+    const {loading , data } = useQuery(GET_LAUNCH,{variables:{limit:7}});
 
     const [mobileNavigationActive, setMobileNavigationActive] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isSecondaryMenuOpen, setIsSecondaryMenuOpen] = useState(false);
-  const [modalActive, setModalActive] = useState(false);
 
   const toggleIsUserMenuOpen = useCallback(
     () => setIsUserMenuOpen((isUserMenuOpen) => !isUserMenuOpen),
@@ -24,9 +22,7 @@ function Landing() {
     [],
   );
 
-  const handleNavigationToggle = useCallback(() => {
-    console.log('toggle navigation visibility');
-  }, []);
+
 
   const toggleMobileNavigationActive = useCallback(
     () =>
@@ -35,10 +31,7 @@ function Landing() {
       ),
     [],
   );
-  const toggleModalActive = useCallback(
-    () => setModalActive((modalActive) => !modalActive),
-    [],
-  );
+  
   const logo = {
     width: 124,
     topBarSource:"https://upload.wikimedia.org/wikipedia/commons/9/96/SpaceX_Logo_Black.png",
@@ -113,7 +106,6 @@ function Landing() {
       action={{
         icon: ConversationMinor,
         accessibilityLabel: 'Contact support',
-        onClick: toggleModalActive,
       }}
     />
   </Navigation>  
